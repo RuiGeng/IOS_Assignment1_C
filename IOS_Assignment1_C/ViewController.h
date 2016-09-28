@@ -10,6 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *currentIncomeLabel;
+@property double currentIncome;
+@property NSTimer *timer;
+
 
 @end
 
