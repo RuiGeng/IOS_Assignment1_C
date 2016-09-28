@@ -11,6 +11,9 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *currentIncomeLabel;
+@property (weak, nonatomic) IBOutlet UISlider *annualSalarySlider;
+@property (weak, nonatomic) IBOutlet UILabel *annualSalaryLabel;
+
 @property double currentIncome;
 @property NSTimer *timer;
 

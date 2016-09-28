@@ -48,4 +48,8 @@
     }
 }
 
+- (IBAction)changeSalary:(id)sender {
+    _annualSalaryLabel.text = [NSString stringWithFormat:@"$ %.f", _annualSalarySlider.value];
+}
+
 @end

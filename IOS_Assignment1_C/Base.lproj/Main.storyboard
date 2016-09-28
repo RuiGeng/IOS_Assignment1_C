@@ -56,6 +56,9 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="28000" minValue="28000" maxValue="68000" translatesAutoresizingMaskIntoConstraints="NO" id="ILf-1T-4nk">
                                 <rect key="frame" x="18" y="415" width="289" height="31"/>
+                                <connections>
+                                    <action selector="changeSalary:" destination="BYZ-38-t0r" eventType="valueChanged" id="skY-p2-Ngg"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udi-qO-EjO">
                                 <rect key="frame" x="220" y="222" width="62" height="48"/>
@@ -70,6 +73,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="annualSalaryLabel" destination="qib-GV-Nd1" id="0aZ-HA-PUn"/>
+                        <outlet property="annualSalarySlider" destination="ILf-1T-4nk" id="VRE-0r-vFo"/>
                         <outlet property="currentIncomeLabel" destination="hOo-UV-N7M" id="9td-Uj-UjZ"/>
                     </connections>
                 </viewController>
