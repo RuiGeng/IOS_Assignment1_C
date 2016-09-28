@@ -14,16 +14,33 @@
 
 @implementation ViewController
 
-- (void)onTick:(NSTimer *)timer {
-    _currentIncome += 0.01;
-    _currentIncomeLabel.text = [NSString stringWithFormat:@"$ %.04f", _currentIncome];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _currentIncome = 0.00;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    float annualSalaryValue = [userDefaults floatForKey:@"annualsalaryKey"];
+    
+    if(annualSalaryValue != 0){
+        _annualSalarySlider.value = annualSalaryValue;
+    }else{
+        _annualSalarySlider.value = _annualSalarySlider.minimumValue;
+    }
+    
+    double currentIncomeValue = [userDefaults doubleForKey:@"currentincomeKey"];
+    if(currentIncomeValue != 0){
+        _currentIncome = currentIncomeValue;
+    }else{
+        currentIncomeValue = 0.00;
+    }
+    
+    _annualSalaryLabel.text = [NSString stringWithFormat:@"$ %.f", _annualSalarySlider.value];
+    
+    _currentIncomeLabel.text = [NSString stringWithFormat:@"$ %.04f", _currentIncome];
+    
+    _secondIncome = _annualSalarySlider.value/DAY/HOUR/MINUTES/SECOND;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +67,22 @@
 
 - (IBAction)changeSalary:(id)sender {
     _annualSalaryLabel.text = [NSString stringWithFormat:@"$ %.f", _annualSalarySlider.value];
+    _secondIncome = _annualSalarySlider.value/DAY/HOUR/MINUTES/SECOND;
 }
+
+- (IBAction)saveValues:(id)sender {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [userDefaults setFloat:_annualSalarySlider.value forKey:@"annualsalaryKey"];
+    
+    [userDefaults setDouble:_currentIncome forKey:@"currentincomeKey"];
+    
+}
+
+- (void)onTick:(NSTimer *)timer {
+    _currentIncome += _secondIncome;
+    _currentIncomeLabel.text = [NSString stringWithFormat:@"$ %.04f", _currentIncome];
+}
+
 
 @end

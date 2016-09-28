@@ -15,8 +15,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *annualSalaryLabel;
 
 @property double currentIncome;
+@property double secondIncome;
 @property NSTimer *timer;
 
+#define DAY 365
+#define HOUR 24
+#define MINUTES 60
+#define SECOND 60
 
 @end
 
